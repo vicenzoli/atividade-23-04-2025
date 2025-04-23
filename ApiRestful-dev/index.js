@@ -13,8 +13,15 @@ const bancoDeDados = [
         professor: 'Ramon'
     }
 ]
+
 app.get('/aulas', (req, res) => {
-    res.status(200).send(bancoDeDados)
+fs.readFile('bancoDeDados.json', 'utf-8', (err, data) => {
+if(err) {
+res.status(500).json({msg:"erro no servidor"})
+I
+}
+res.status( ).json (bancoDeDados)
+})
 })
 
 app.post('/aulas', (req, res) => {
@@ -26,6 +33,22 @@ try{
     }
     res.status(201).send(dados)
 })
+    
+app.get('./aulas/:id', (req, res) => {
+const id = req.params.id
+fs.readFile('bancoDeDados.json', 'utf-8', (err, data) => {
+if(err){
+res.status(500).json({msg: "erro no servidor"})
+}
+const usuarios = JSON.parse(data)
+const user = usuarios.find(user => user.id == id)
+if(user) {
+res.status(200).json(user)
+}
+res.status(404).json({msg:'Usuario nao encontrado'})
+})
+})
+
 
 app.put('/aulas/:id',(req,res) => {
     const id = req.params.id
