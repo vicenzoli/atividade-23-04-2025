@@ -19,10 +19,12 @@ app.get('/aulas', (req, res) => {
 
 app.post('/aulas', (req, res) => {
     const dados = req.body
-    dados['id'] = bancoDeDados.lenght + 1
-    bancoDeDados.push(dados)
-    req.status(201)
-
+try{
+        const bd = fs.readFileSync('bancoDeDados.json', 'utf-8')
+    } catch (e) {
+        console.log(e)
+    }
+    res.status(201).send(dados)
 })
 
 app.put('/aulas/:id',(req,res) => {
