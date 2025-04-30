@@ -1,14 +1,8 @@
-[
-    {
-      "titulo": "Introdução ao Node.js",
-      "descricao": "Aula sobre conceitos básicos de Node.js",
-      "duracao": 45,
-      "id": "c9a6469e-2f3a-4b7f-b451-e2e9c356812a"
-    },
-    {
-      "titulo": "Introdução ao Node.js",
-      "descricao": "Aula sobre conceito   s básicos de Node.js",
-      "duracao": 45,
-      "id": "f3339a02-7cfb-4175-969d-09d43c1ac364"
+const fs = require ('fs')
+
+const texto = 'abcdefghijklmnopqrstuvwxy'
+fs.writeFile('./teste.txt', texto, (err) => {
+    if (err){
+    console.log(err)
     }
-  ]
+})
